@@ -1,6 +1,8 @@
-import java.util.List;
+package 系统设计.三级分类;
 
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class Category {

@@ -1,16 +1,18 @@
+package 系统设计.三级分类;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.SneakyThrows;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import lombok.SneakyThrows;
-
 public class Main {
 
-    @SneakyThrows public static void main(String[] args) {
+    @SneakyThrows
+    public static void main(String[] args) {
         Category c1 = new Category(1, 0, 1, "一级分类1", 1);
         Category c2 = new Category(2, 0, 1, "一级分类2", 2);
 
@@ -33,7 +35,7 @@ public class Main {
         Category c18 = new Category(18, 7, 3, "三级分类11", 11);
 
         List<Category> list = Arrays.asList(c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17,
-            c18);
+                c18);
         list = listWithTree(list);
         ObjectMapper om = new ObjectMapper();
         System.out.println(om.writeValueAsString(list));
@@ -41,15 +43,15 @@ public class Main {
 
     public static List<Category> listWithTree(List<Category> list) {
         return list.stream().filter(category -> category.getLevel() == 1)  //一级分类
-            .peek(category -> category.setChildrenList(getChildrenList(category, list))) //递归设置子分类
-            .sorted(Comparator.comparingInt(Category::getSort)) //升序
-            .collect(Collectors.toList());
+                .peek(category -> category.setChildrenList(getChildrenList(category, list))) //递归设置子分类
+                .sorted(Comparator.comparingInt(Category::getSort)) //升序
+                .collect(Collectors.toList());
     }
 
     private static List<Category> getChildrenList(Category category, List<Category> list) {
         return list.stream().filter(c -> Objects.equals(c.getParentId(), category.getId())) //父分类id=当前分类id
-            .peek(c -> c.setChildrenList(getChildrenList(c, list))) //递归设置子分类
-            .sorted(Comparator.comparingInt(Category::getSort)) //升序
-            .collect(Collectors.toList());
+                .peek(c -> c.setChildrenList(getChildrenList(c, list))) //递归设置子分类
+                .sorted(Comparator.comparingInt(Category::getSort)) //升序
+                .collect(Collectors.toList());
     }
 }
