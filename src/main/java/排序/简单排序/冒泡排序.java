@@ -6,7 +6,7 @@ import static 排序.Array.nums;
 import static 排序.Array.swap;
 
 /**
- * 比较相邻元素大小,进行交换
+ * 不断交换相邻元素,将较大的元素逐渐冒泡到数组的末尾
  */
 public class 冒泡排序 {
     /**
