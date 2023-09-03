@@ -1,9 +1,10 @@
-package 排序;
+package 排序.高级排序;
 
 import java.util.Arrays;
 import java.util.Random;
 
 import static 排序.Array.nums;
+import static 排序.Array.swap;
 
 /**
  * {5, 3, 7, 2, 9, 8, 1, 4}
@@ -60,11 +61,5 @@ public class 快速排序 {
             unilateralQuickSort(nums, l, i - 1);
             unilateralQuickSort(nums, i + 1, r);
         }
-    }
-
-    public static void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
     }
 }
