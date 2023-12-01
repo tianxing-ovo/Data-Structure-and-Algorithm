@@ -16,11 +16,10 @@ public class SequenceList<T> implements Iterable<T> {
 
     public SequenceList(int capacity) {
         elementData = (T[]) new Object[capacity];
-        size = 0;
     }
 
     /**
-     * 清空
+     * 清空顺序表
      */
     public void clear() {
         for (int i = 0; i < size; i++) {
