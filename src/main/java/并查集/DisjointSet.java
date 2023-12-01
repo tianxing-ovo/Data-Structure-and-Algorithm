@@ -69,13 +69,4 @@ public class DisjointSet {
     public String toString() {
         return "parent: " + Arrays.toString(parent) + "  size: " + Arrays.toString(size);
     }
-
-    public static void main(String[] args) {
-        DisjointSet set = new DisjointSet(4);
-        set.union(0, 1);
-        set.union(2, 3);
-        set.union(0, 2);
-        set.find(0);
-        System.out.println(set);
-    }
 }
