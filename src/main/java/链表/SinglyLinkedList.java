@@ -1,9 +1,13 @@
 package 链表;
 
+import com.sun.istack.internal.NotNull;
+
+import java.util.Iterator;
+
 /**
  * 单向链表
  */
-public class SinglyLinkedList<T> {
+public class SinglyLinkedList<T> implements Iterable<T> {
     private final Node<T> head; // 头节点
 
     private int size; // 节点数量
@@ -101,5 +105,29 @@ public class SinglyLinkedList<T> {
             node = node.next;
         }
         return node;
+    }
+
+    /**
+     * 遍历链表
+     */
+    @NotNull
+    @Override
+    public Iterator<T> iterator() {
+
+        return new Iterator<T>() {
+
+            Node<T> node = head;
+
+            @Override
+            public boolean hasNext() {
+                return node.next != null;
+            }
+
+            @Override
+            public T next() {
+                node = node.next;
+                return node.item;
+            }
+        };
     }
 }
