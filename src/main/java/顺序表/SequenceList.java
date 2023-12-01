@@ -69,6 +69,7 @@ public class SequenceList<T> implements Iterable<T> {
         // 整体往前移动1个位置
         System.arraycopy(elementData, index + 1, elementData, index, size - index - 1);
         elementData[--size] = null;
+        decrease();
         return oldValue;
     }
 
@@ -98,6 +99,16 @@ public class SequenceList<T> implements Iterable<T> {
     public void grow() {
         if (size == elementData.length) {
             int newLength = size + size / 2;
+            elementData = Arrays.copyOf(elementData, newLength);
+        }
+    }
+
+    /**
+     * 缩容
+     */
+    public void decrease() {
+        if (size < elementData.length / 4) {
+            int newLength = elementData.length / 2;
             elementData = Arrays.copyOf(elementData, newLength);
         }
     }
