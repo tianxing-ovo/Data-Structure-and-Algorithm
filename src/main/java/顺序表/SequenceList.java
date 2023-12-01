@@ -1,6 +1,7 @@
 package 顺序表;
 
-import org.jetbrains.annotations.NotNull;
+
+import com.sun.istack.internal.NotNull;
 
 import java.util.Arrays;
 import java.util.Iterator;
