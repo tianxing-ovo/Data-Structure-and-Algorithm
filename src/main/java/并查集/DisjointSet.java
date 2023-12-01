@@ -2,6 +2,9 @@ package 并查集;
 
 import java.util.Arrays;
 
+/**
+ * 并查集: 多个树组成的森林
+ */
 public class DisjointSet {
     /**
      * i: 元素
