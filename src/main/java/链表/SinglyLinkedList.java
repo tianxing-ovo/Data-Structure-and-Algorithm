@@ -8,9 +8,24 @@ import java.util.Iterator;
  * 单向链表
  */
 public class SinglyLinkedList<T> implements Iterable<T> {
+
+    private int size; // 节点个数
+
     private final Node<T> head; // 头节点
 
-    private int size; // 节点数量
+    /**
+     * 获取指定位置处的节点
+     */
+    public Node<T> getNode(int index) {
+        if (index < 0) {
+            return head;
+        }
+        Node<T> node = head.next;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node;
+    }
 
     public SinglyLinkedList() {
         head = new Node<>(null, null);
@@ -40,14 +55,18 @@ public class SinglyLinkedList<T> implements Iterable<T> {
     }
 
     /**
-     * 获取指定位置处的节点
+     * 节点
      */
-    public Node<T> getNode(int index) {
-        Node<T> node = head.next;
-        for (int i = 0; i < index; i++) {
-            node = node.next;
+    private static class Node<T> {
+
+        T item; // 元素
+
+        Node<T> next; // 下一个节点
+
+        public Node(T item, Node<T> next) {
+            this.item = item;
+            this.next = next;
         }
-        return node;
     }
 
     /**
