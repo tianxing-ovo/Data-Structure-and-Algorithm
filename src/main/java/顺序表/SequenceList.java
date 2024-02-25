@@ -8,10 +8,15 @@ import java.util.Iterator;
 
 @SuppressWarnings("unchecked")
 public class SequenceList<T> implements Iterable<T> {
-    // 存储元素的数组
+
+    /**
+     * 存储元素的数组
+     */
     transient T[] elementData;
 
-    // 元素个数
+    /**
+     * 元素个数
+     */
     private int size;
 
     public SequenceList(int capacity) {
@@ -119,7 +124,10 @@ public class SequenceList<T> implements Iterable<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
-            private int cursor; // 指针
+            /**
+             * 指针
+             */
+            private int cursor;
 
             @Override
             public boolean hasNext() {
