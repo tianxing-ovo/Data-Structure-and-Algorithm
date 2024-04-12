@@ -2,8 +2,9 @@ package 排序.简单排序;
 
 import java.util.Arrays;
 
+import static util.SwapUtil.swap;
 import static 排序.Array.nums;
-import static 排序.Array.swap;
+
 
 /**
  * 不断交换相邻元素,将较大的元素逐渐冒泡到数组的末尾

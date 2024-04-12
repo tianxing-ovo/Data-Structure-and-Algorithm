@@ -3,8 +3,9 @@ package 排序.高级排序;
 import java.util.Arrays;
 import java.util.Random;
 
+import static util.SwapUtil.swap;
 import static 排序.Array.nums;
-import static 排序.Array.swap;
+
 
 /**
  * {5, 3, 7, 2, 9, 8, 1, 4}

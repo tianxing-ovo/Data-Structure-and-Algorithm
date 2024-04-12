@@ -7,33 +7,46 @@ import static 排序.Array.nums;
 public class 归并排序 {
 
     public static void main(String[] args) {
-        int[] temp = new int[nums.length]; //临时数组
-        mergeSort(nums, temp, 0, nums.length - 1);
+        mergeSort(nums, 0, nums.length - 1);
         System.out.println(Arrays.toString(nums));
     }
 
     /**
      * 归并排序
+     *
+     * @param nums  整数数组
+     * @param left  左边界
+     * @param right 右边界
      */
-    private static void mergeSort(int[] nums, int[] temp, int l, int r) {
-        if (l < r) {
-            int mid = (l + r) >>> 1;
-            mergeSort(nums, temp, l, mid);
-            mergeSort(nums, temp, mid + 1, r);
-            int p = 0; //临时数组指针
-            int i = l; //[l,mid]区间指针
-            int j = mid + 1; //[mid+1,r]区间指针
-            while (i <= mid && j <= r) {
-                temp[p++] = nums[i] < nums[j] ? nums[i++] : nums[j++]; //取较小值
+    private static void mergeSort(int[] nums, int left, int right) {
+        if (left < right) {
+            // 防止整数溢出
+            int mid = left + (right - left) / 2;
+            // 递归对左右子数组进行归并排序
+            mergeSort(nums, left, mid);
+            mergeSort(nums, mid + 1, right);
+            // 合并两个已排序的子数组
+            // 创建临时数组
+            int[] temp = new int[right - left + 1];
+            // 临时数组的指针
+            int p = 0;
+            // [left, mid]区间指针
+            int p1 = left;
+            // [mid + 1, right]区间指针
+            int p2 = mid + 1;
+            // 取较小值
+            while (p1 <= mid && p2 <= right) {
+                temp[p++] = nums[p1] < nums[p2] ? nums[p1++] : nums[p2++];
             }
-            while (i <= mid) {
-                temp[p++] = nums[i++];
+            // 将剩余的元素加入到临时数组末尾
+            while (p1 <= mid) {
+                temp[p++] = nums[p1++];
             }
-            while (j <= r) {
-                temp[p++] = nums[j++];
+            while (p2 <= right) {
+                temp[p++] = nums[p2++];
             }
-            //源数组 源数组开始索引 目标数组 目标数组开始索引 复制的数组元素的数量
-            System.arraycopy(temp, 0, nums, l, r - l + 1); //复制temp到nums中
+            // 将有序的临时数组复制回原数组
+            System.arraycopy(temp, 0, nums, left, right - left + 1);
         }
     }
 }

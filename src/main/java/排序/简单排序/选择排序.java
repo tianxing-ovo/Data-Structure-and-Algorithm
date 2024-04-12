@@ -2,8 +2,9 @@ package 排序.简单排序;
 
 import java.util.Arrays;
 
+import static util.SwapUtil.swap;
 import static 排序.Array.nums;
-import static 排序.Array.swap;
+
 
 /**
  * 每一轮中选择未排序部分中的最小元素，将其放置在已排序部分的末尾
